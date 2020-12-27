@@ -1,0 +1,21 @@
+{% extends 'base_art.html' %}
+
+{% block title %}Артыкулы па тэгу {{ tag.title }}{% endblock %}
+
+{% block content %}
+    <h1 class="mb-5">Артыкулы з "{{ tag.title|title }}" тэгам:</h1>
+    {% for a in tag.articles.all() %}
+        <div class="card">
+          <div class="card-header">
+              {{ a.pub_date }}
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">
+                <a href="{% url 'articles:detail' a.id %}">{{ a.title }}</a>
+            </h5>
+            <p class="card-text">{{ a.text|truncatewords:15 }}</p>
+            <a href="#" class="btn btn-primary">Чытаць</a>
+          </div>
+        </div>
+    {% endfor %}
+{% endblock %}

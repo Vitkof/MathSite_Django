@@ -1,0 +1,15 @@
+{% extends 'base_art.html' %}
+
+{% block title %}
+    Выдаліць артыкул "{{ article.title|title }}" - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <form action="{% url 'article_delete_url' id=article.id %}" method="POST">
+        {% csrf_token %}
+
+        <h3>Упэўнены, што хочаце выдаліць артыкул <b>"{{ article.title|title }}"</b>?</h3>
+        <a href="{% url article_delete_url id=article.id %}">Адмяніць</a>
+        <button type="submit" class="btn btn-danger">Выдаліць</button>
+    </form>
+{% endblock %}

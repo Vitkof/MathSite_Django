@@ -1,0 +1,32 @@
+{% extends 'base_art.html' %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block content %}
+    <h2>{{ article.title }}</h2>
+    <img width="100" height="50" src="/uploads/{{ article.poster }}" />
+    <p>{{ article.text|safe }}</p>
+    <p><a href="/{{ article.id }}/{{ article.slug }}/addlikes/">
+        <img src="{% static 'articles/images/like.png' %}" width="25" height="25" style="margin-top:-7px;">
+    </a></p>
+
+
+    <p><em>{{ article.pub_date }}</em>
+{% if article.was_published_recently %}<b style="color:blue">НОВЫ АРТ!</b>{% endif %}</p>
+
+    {% if latest_comments %}
+        <hr>
+        {% for c in latest_comments %}
+            <strong>{{ c.author}}</strong>
+            <p>{{ c.text }}</p>
+        {% endfor %}
+    {% endif %}
+    <hr>
+    <form action="{% url 'articles:add_comment' article.id %}" method="POST">
+        {% csrf_token %}
+        <input type="text" required placeholder="Ваша імя" name="name"><br>
+        <textarea required placeholder="Тэкст каментара" cols="50" rows="7" name="text"></textarea><br>
+        <button type="submit">Пакінуць каментар</button>
+
+    </form>
+{% endblock %}

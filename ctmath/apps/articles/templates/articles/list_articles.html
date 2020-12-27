@@ -1,0 +1,28 @@
+{% extends 'base_art.html' %}
+
+{% block title %}Апошнiя артыкулы{% endblock %}
+
+{% block content %}
+    {% if latest_articles %}
+        {% for a in latest_articles %}
+            <div class="card">
+              <div class="card-header">
+                  {{ a.pub_date }}
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">
+                    <a href="{% url 'articles:detail' a.id %}">{{ a.title }}</a>
+                </h5>
+                <p class="card-text">{{ a.text|truncatewords:15 }}</p>
+                <a href="#" class="btn btn-primary">Чытаць</a>
+              </div>
+            </div>
+
+
+
+
+        {% endfor %}
+    {% else %}
+        Артыкулы не знойдзены! )=
+    {% endif %}
+{% endblock %}
