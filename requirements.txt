@@ -1,0 +1,9 @@
+asgiref==3.3.1
+Django==3.1.3
+django-grappelli==2.14.3
+mysqlclient==2.0.1
+Pillow==8.0.1
+pytz==2020.4
+sqlparse==0.4.1
+django-durationwidget==1.0.5
+djangorestframework==3.12.2
