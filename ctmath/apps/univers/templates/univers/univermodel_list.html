@@ -1,0 +1,44 @@
+<table border="1">
+    <caption>Сусветны рэйтынг універсітэтаў 2021 <i>(Times Higher Education)</i></caption>
+    <thead>
+    <tr bgcolor="#5f9ea0">
+        <th scope="col">Рэйтынг</th>
+        <th scope="col">Назва</th>
+        <th scope="col">Краіна</th>
+        <th scope="col">У цэлым</th>
+        <th scope="col">Навучанне</th>
+        <th scope="col">Даследаванні</th>
+        <th scope="col">Цытаванне</th>
+        <th scope="col">Прыбытак прамысловасці</th>
+        <th scope="col">Міжнародны светапогляд</th>
+        <th scope="col">Лік студэнтаў</th>
+        <th scope="col">Студэнтаў на выкладчыка</th>
+        <th scope="col">% замежнікаў</th>
+        <th scope="col">Жанчыны: Мужчыны суадносіны</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for obj in objects_list %}
+        <tr>
+            <td>{{ obj.id }}</td>
+            <td>{{ obj.title }}</td>
+            <td>{{ obj.location }}</td>
+            <td>{{ obj.overall }}</td>
+            <td>{{ obj.teaching }}</td>
+            <td>{{ obj.research }}</td>
+            <td>{{ obj.citations }}</td>
+            <td>{{ obj.industry_income }}</td>
+            <td>{{ obj.international_outlook }}</td>
+            <td>{{ obj.number_students }}</td>
+            <td>{{ obj.students_staff }}</td>
+            <td>{{ obj.percent_foreigners }}</td>
+            <td>{{ obj.gender_ratio }}</td>
+            <!-- If object_list is empty  -->
+    {% empty %}
+        <td>Пакуль аб'ектаў няма.</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
